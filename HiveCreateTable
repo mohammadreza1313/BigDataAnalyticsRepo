@@ -32,5 +32,5 @@ CREATE EXTERNAL TABLE IF NOT EXISTS books (
 )
 ROW FORMAT SERDE 'org.apache.hive.hcatalog.data.JsonSerDe'
 STORED AS TEXTFILE
-LOCATION 'gs://finalbucketassignment/meta_Books.jsonl/'
+LOCATION 'gs://finalbucketassignment/books.jsonl/'
 TBLPROPERTIES ("skip.header.line.count"="0");
