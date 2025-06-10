@@ -1,0 +1,24 @@
+
+SELECT details['Language'] AS language, COUNT(*) AS total_books
+FROM books
+GROUP BY details['Language']
+ORDER BY total_books DESC;
+
+
+SELECT main_category, AVG(average_rating) AS avg_rating
+FROM books
+GROUP BY main_category
+ORDER BY avg_rating DESC;
+
+
+SELECT author.name AS author_name, COUNT(*) AS books_count
+FROM books
+GROUP BY author.name
+ORDER BY books_count DESC
+LIMIT 10;
+
+
+SELECT category, COUNT(*) AS count
+FROM books LATERAL VIEW explode(categories) t AS category
+GROUP BY category
+ORDER BY count DESC;
