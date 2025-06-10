@@ -1,0 +1,36 @@
+CREATE EXTERNAL TABLE IF NOT EXISTS books (
+    main_category STRING,
+    title STRING,
+    subtitle STRING,
+    
+    author STRUCT<
+        name: STRING,
+        avatar: STRING,
+        about: ARRAY<STRING>
+    >,
+
+    average_rating FLOAT,
+    rating_number INT,
+    price FLOAT,
+
+    features ARRAY<STRING>,
+    description ARRAY<STRING>,
+
+    images ARRAY<STRUCT<
+        large: STRING,
+        variant: STRING
+    >>,
+
+    videos ARRAY<STRING>, 
+    store STRING,
+    categories ARRAY<STRING>,
+
+    details MAP<STRING, STRING>,
+
+    parent_asin STRING,
+    bought_together STRING
+)
+ROW FORMAT SERDE 'org.apache.hive.hcatalog.data.JsonSerDe'
+STORED AS TEXTFILE
+LOCATION 'gs://finalbucketassignment/meta_Books.jsonl/'
+TBLPROPERTIES ("skip.header.line.count"="0");
